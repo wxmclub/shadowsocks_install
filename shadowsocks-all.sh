@@ -561,7 +561,7 @@ install_dependencies(){
         echo -e "[${green}Info${plain}] Checking the EPEL repository complete..."
 
         yum_depends=(
-            unzip gzip openssl openssl-devel gcc python python-devel python-setuptools pcre pcre-devel libtool libevent
+            unzip gzip openssl openssl-devel gcc python2 python2-devel python2-setuptools pcre pcre-devel libtool libevent
             autoconf automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel
             libev-devel c-ares-devel git qrencode
         )
@@ -570,7 +570,7 @@ install_dependencies(){
         done
     elif check_sys packageManager apt; then
         apt_depends=(
-            gettext build-essential unzip gzip python python-dev python-setuptools curl openssl libssl-dev
+            gettext build-essential unzip gzip python2 python2-dev python2-setuptools curl openssl libssl-dev
             autoconf automake libtool gcc make perl cpio libpcre3 libpcre3-dev zlib1g-dev libev-dev libc-ares-dev git qrencode
         )
 
@@ -890,7 +890,7 @@ install_shadowsocks_python(){
     fi
 
     cd ${shadowsocks_python_file} || exit
-    python setup.py install --record /usr/local/shadowsocks_python.log
+    python2 setup.py install --record /usr/local/shadowsocks_python.log
 
     if [ -f /usr/bin/ssserver ] || [ -f /usr/local/bin/ssserver ]; then
         chmod +x ${shadowsocks_python_init}
